@@ -33,3 +33,79 @@ function shuffle (src) {
 /**********************************************
  * YOUR CODE BELOW
  **********************************************/
+
+function App() {
+  const [words, setWords] = React.useState([
+    'banana',
+    'react',
+    'javascript',
+    'component',
+    'shuffle',
+    'programming'
+  ]);
+  const [currentWordIndex, setCurrentWordIndex] = React.useState(0);
+  const [guess, setGuess] = React.useState('');
+  const [score, setScore] = React.useState(0);
+  const [strikes, setStrikes] = React.useState(0);
+  const [message, setMessage] = React.useState('');
+
+  const word = words[currentWordIndex];
+  const scrambled = React.useMemo(() => shuffle(word), [currentWordIndex]);
+
+  function handleGuessSubmit(e) {
+    e.preventDefault();
+
+    if (guess.toLowerCase() === word.toLowerCase()) {
+      setScore(score + 1);
+      setMessage('Correct!');
+      nextWord();
+    } else {
+      setStrikes(strikes + 1);
+      setMessage('Try again!');
+      if (strikes + 1 >= 3) {
+        nextWord();
+      }
+    }
+
+    setGuess('');
+  }
+
+  function nextWord() {
+    if (currentWordIndex + 1 < words.length) {
+      setCurrentWordIndex(currentWordIndex + 1);
+    } else {
+      setMessage('🎉 Game over! Final score: ' + score);
+    }
+    setStrikes(0);
+  }
+
+  function resetGame() {
+    setCurrentWordIndex(0);
+    setScore(0);
+    setStrikes(0);
+    setMessage('');
+    setGuess('');
+  }
+
+  return (
+    <div className="container">
+      <h1>Scramble Game</h1>
+      <p><strong>Scrambled Word:</strong> {scrambled}</p>
+      <form onSubmit={handleGuessSubmit}>
+        <input
+          type="text"
+          value={guess}
+          onChange={(e) => setGuess(e.target.value)}
+          placeholder="Your guess..."
+        />
+        <button type="submit">Guess</button>
+      </form>
+      <p>Score: {score} | Strikes: {strikes}</p>
+      <p>{message}</p>
+      <button onClick={resetGame}> Restart</button>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);

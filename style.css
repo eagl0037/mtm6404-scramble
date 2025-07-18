@@ -1,0 +1,103 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f9ff, #dbefff);
+    color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Main Container */
+  .container {
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 60, 130, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #e6efff;
+  }
+  
+  /* Heading */
+  .container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1e3a8a;
+  }
+  
+  /* Word display */
+  .container p {
+    font-size: 1.1rem;
+    margin: 1rem 0;
+  }
+  
+  /* Input */
+  input[type="text"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #60a5fa;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3);
+  }
+  
+  /* Buttons */
+  button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  /* Message */
+  .container p:nth-of-type(3) {
+    font-weight: bold;
+    color: #d97706;
+  }
+  
+  /* Restart Button */
+  .container button:last-of-type {
+    margin-top: 1rem;
+    background-color: #10b981;
+  }
+  
+  .container button:last-of-type:hover {
+    background-color: #059669;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .container {
+      padding: 1.5rem;
+    }
+  
+    .container h1 {
+      font-size: 1.6rem;
+    }
+  }
+  
